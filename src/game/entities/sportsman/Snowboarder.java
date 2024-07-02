@@ -7,7 +7,7 @@ import game.enums.League;
 public class Snowboarder extends WinterSportsman {
 
     public Snowboarder(String name, int age, Gender gender, double maxSpeed, double acceleration, Discipline discipline) {
-        super(name, age, gender, maxSpeed, acceleration, discipline);
+        super(name, age, gender, discipline, League.ADULT, maxSpeed, acceleration);
     }
 
     @Override
@@ -16,6 +16,9 @@ public class Snowboarder extends WinterSportsman {
         double newSpeed = Math.min(getSpeed() + accelerationWithBonus * friction, getMaxSpeed());
         getLocation().setX(getLocation().getX() + newSpeed);
         setSpeed(newSpeed);
+    }
+
+    private void setSpeed(double newSpeed) {
     }
 
     @Override
@@ -40,13 +43,13 @@ public class Snowboarder extends WinterSportsman {
 
         Snowboarder that = (Snowboarder) o;
 
-        if (age != that.age) return false;
-        if (Double.compare(that.maxSpeed, maxSpeed) != 0) return false;
-        if (Double.compare(that.acceleration, acceleration) != 0) return false;
+        if (getAge() != that.getAge()) return false;
+        if (Double.compare(that.getMaxSpeed(), getMaxSpeed()) != 0) return false;
+        if (Double.compare(that.getAcceleration(), getAcceleration()) != 0) return false;
         if (Double.compare(that.speed, speed) != 0) return false;
-        if (!name.equals(that.name)) return false;
-        if (gender != that.gender) return false;
-        if (discipline != that.discipline) return false;
-        return league == that.league;
+        if (!getName().equals(that.getName())) return false;
+        if (getGender() != that.getGender()) return false;
+        if (getDiscipline() != that.getDiscipline()) return false;
+        return getLeague() == that.getLeague();
     }
 }

@@ -1,11 +1,11 @@
 package game.entities.sportsman;
-
+import game.competition.Competitor;
 import game.enums.Discipline;
 import game.enums.Gender;
 import game.enums.League;
 import game.entities.MobileEntity;
 
-public class Sportsman extends MobileEntity {
+public class Sportsman extends Competitor {
     private String name;
     private double age;
     private Gender gender;
@@ -49,5 +49,10 @@ public class Sportsman extends MobileEntity {
         if (Double.compare(sportsman.age, age) != 0) return false;
         if (!name.equals(sportsman.name)) return false;
         return gender == sportsman.gender;
+    }
+
+    @Override
+    public void move(double friction) {
+
     }
 }
